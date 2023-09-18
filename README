@@ -1,0 +1,27 @@
+Welcome to DFM the Desktop-File-Manager. 
+
+Read the files "INSTALL", "BUGS" and "START" before you start!
+There is also a manpage.
+
+Short discription:
+
+- ".dfmdesk/" is the desktopfolder
+  (It'll be created automatically while you are starting DFM the first time)
+- In "dfmext" are the descriptions of the extensions
+  ("extension;icon;startcommand1&startcommand2&...")
+  ex: "*.gif;/usr/X11/lib/X11/dfm/picicon.xpm;xv !0!"
+  !0! is the filename(must exist) and !1! the "drop"-names of other file(s).
+  You can use your own "~/.dfmext"
+  The last line must not have an extension!
+- SHIFT makes a link. CTRL a copy like "cp -rdp"(Linux). Nothing moves 
+  the file.
+- SHIFT and CTRL make a copy like "cp -r". (follow links)
+- DFM loads XVPICS automatically. Eventually do select and "Re-recognize".
+- The window and icon info is only saved, if you turn on the save buttons
+  in the option window and do a "Save positions/info". Some save buttons are
+  turned on automatically.
+- The checkbuttons in the bottom of the "Maindesktop Options" window are 
+  connected to the contextmenu of the wm. (bottom, right).
+- There is a shellscript called "utils/xvpicmaker". It can be used to 
+  generate your own xvpics. The script needs "utils/ppmtoxvpic".
+- The context of the wm is available by first pressing the middle mouse key.

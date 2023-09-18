@@ -1,0 +1,34 @@
+DFM runs with:
+==============
+
+Linux 2.0.33
+MkLinux (PPC) V2.1 (with shared librarys)
+IRIX 6.2 , 6.3
+SunOS 5.5.1
+NetBSD 1.2
+FreeBSD
+
+X11R6 1,4,8,16,32 Bit color
+
+fvwm95, fvwm2, fvwm
+olvwm, olwm
+icewm
+twm
+mlvwm (apple-mac look and feel)
+AfterStep, bowman, WindowMaker
+mwm, 4Dwm
+wm2
+wmx (but without multiple desks)
+Enlightenment DR_0.13.2 (wm)
+kwm (kde)
+qvwm
+
+siag accepts drop from dfm
+cooledit accepts drop
+editor(offix) accepts drop
+
+DFM doesn't currently run with:
+===============================
+
+amiwm (amiga windowmanager)
+qvwm

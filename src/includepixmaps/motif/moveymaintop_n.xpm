@@ -1,0 +1,21 @@
+/* XPM */
+static char * moveymaintop_n_xpm[] = {
+"14 14 4 1",
+" 	c #666666",
+".	c #e5e5e5",
+"X	c #b3b3b3",
+"o	c #cccccc",
+"              ",
+"             .",
+"  XXXXXXXXXX..",
+"  XXXX. XXXX..",
+"  XXXX. XXXX..",
+"  XXX.oo XXX..",
+"  XXX.oo XXX..",
+"  XXX.oo XXX..",
+"  XX.oooo XX..",
+"  XX.oooo XX..",
+"  XX.oooo XX..",
+"  X.oooooo X..",
+"  X        X..",
+"  XXXXXXXXXX.."};

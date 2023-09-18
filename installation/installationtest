@@ -1,0 +1,368 @@
+#!/bin/bash
+
+if [ -f ../dfm ]; then
+  echo "DFM seems to be already compiled (static version?)"
+  echo "Do you want to (c)ompile again or (g)o on with the"
+  echo "installation procedure? (c,g) Any other key cancels!"
+  read compile
+  if [ -z $compile ]; then
+    echo "You haven't choosen anything ... exiting ..."
+    exit
+  fi
+  if [ $compile = "c" ] || [ $compile = "C" ]; then
+    compile="c"
+  else
+    if [ $compile = "g" ] || [ $compile = "G" ]; then 
+      compile="g"
+    else
+      echo "You haven't choosen anything ... exiting ..."
+      exit
+    fi
+  fi
+else
+  compile="c"
+fi
+
+if [ $compile = "c" ]; then
+  echo "Now testing your system:"
+  rm -f forms
+  if ! cc -o forms forms.c -I/usr/include/X11 -I/usr/local/include \
+          -I/usr/openwin/include -I/usr/X11R6/include -I. \
+          -L/usr/local/lib -L/usr/X11/lib -L/usr/X11R6/lib \
+          -lforms -lX11 -lm; then
+    echo "----------------------ERROR----------------------"
+    echo "You don't have installed the forms library?! "
+    echo "-------------------------------------------------"
+    exit
+  fi
+  if ! ./forms; then
+    exit
+  fi
+  
+  rm -f xpm
+  if ! cc -o xpm xpm.c -I/usr/include/X11 -I/usr/local/include \
+          -I/usr/openwin/include -I/usr/X11R6/include -I. \
+          -L/usr/local/lib -L/usr/X11/lib -L/usr/X11R6/lib \
+          -lXpm -lX11; then
+    echo "----------------------ERROR----------------------"
+    echo "You don't have installed the xpm library?! "
+    echo "-------------------------------------------------"
+    exit
+  fi
+  if ! ./xpm; then
+    exit
+  fi
+
+  rm -f shape
+  if cc -o shape shape.c -I/usr/include/X11 -I/usr/local/include \
+          -I/usr/openwin/include -I/usr/X11R6/include -I. \
+          -L/usr/local/lib -L/usr/X11/lib -L/usr/X11R6/lib \
+          -lXext -lX11; then
+    echo "ShapeExtension OK ..."
+  else
+    echo "----------------------ERROR----------------------"
+    echo "Your XServer doesn't support the ShapeExtension"
+    echo "or there is a configuring problem ?!"
+    echo "-------------------------------------------------"
+    exit
+  fi
+  rm -f forms
+  rm -f xpm
+  rm -f shape
+  
+  echo
+  echo "OK now, I try to compile ..."
+  cd .. 
+  ./config
+  make clean 
+  if ! make; then
+    echo "----------------------ERROR----------------------"
+    echo "Something went wrong during the compilation"
+    echo "Try to use the normal COMPILE way (read INSTALL)"
+    echo "-------------------------------------------------"
+    exit  
+  fi
+  cd installation
+  echo
+  echo "Success!!!"
+fi
+
+name=`whoami`
+
+if [ $name = "root" ]; then
+  echo
+  if type dfm ; then
+    typeon="yes"
+  else
+    typeon="no"
+  fi
+  echo 
+  echo "Where do you want to install the dfm binary?"
+  echo
+  echo "      1. /usr/X11/bin/dfm"
+  echo "      2. /usr/X11R6/bin/dfm"
+  echo "      3. /usr/local/bin/dfm"
+  echo "      4. /usr/bin/X11/dfm"
+  echo "      5. ~/bin/dfm"
+  echo "      6. place it in your own path"
+  if [ $typeon = "yes" ]; then
+    typeold=`type dfm`
+    echo 
+    echo -n "your choise ( <CR>:${typeold#dfm is} ) : "
+  else
+    echo
+    echo -n "your choise: ( <CR>: /usr/local/bin/dfm ) : "
+  fi
+  read choise
+  if [ -z $choise ] && [ $typeon = "yes" ]; then
+    installname=${typeold#dfm is}
+  else
+    if [ -z $choise ] && [ $typeon = "no" ]; then
+      installname="/usr/local/bin/dfm"
+    else
+      if [ $choise = "1" ]; then
+        installname="/usr/X11/bin/dfm"
+      fi
+      if [ $choise = "2" ]; then
+        installname="/usr/X11R6/bin/dfm"
+      fi
+      if [ $choise = "3" ]; then
+        installname="/usr/local/bin/dfm"
+      fi
+      if [ $choise = "4" ]; then
+        installname="~/bin/dfm"
+      fi
+      if [ $choise = "5" ]; then
+        installname="~/bin/dfm"
+      fi
+      if [ $choise = "6" ]; then
+        echo
+        echo "please enter full path (with .../dfm)"
+        read installname
+      fi
+    fi
+  fi  
+  if [ -z $installname ]; then
+    echo "You haven't choosen anything ... exiting ..."
+    exit
+  fi
+  extold="none"
+  libdef="/usr/local/share/dfm"
+  if [ -e /etc/dfmext ]; then
+    extold="/etc/dfmext"
+  else
+    if [ -e /usr/etc/dfmext ]; then
+      extold="/usr/etc/dfmext"
+    else
+      if [ -e /usr/local/etc/dfmext ]; then
+        extold="/usr/local/etc/dfmext"
+      else
+        if [ -e /usr/local/lib/dfm/dfmext ]; then
+          extold="/usr/local/lib/dfm/dfmext"
+        else
+          if [ -e /usr/share/dfm/dfmext ]; then
+            extold="/usr/share/dfm/dfmext"
+            libdef="/usr/share/dfm"
+          else
+            if [ -e /usr/local/share/dfm/dfmext ]; then
+              extold="/usr/local/share/dfm/dfmext"
+              libdef="/usr/local/share/dfm"
+            else
+              if [ -e /usr/X11/lib/X11/dfm/dfmext ]; then
+                extold="/usr/X11/lib/X11/dfm/dfmext"
+                libdef="/usr/X11/lib/X11/dfm"
+              else
+                if [ -e /usr/X11R6/lib/X11/dfm/dfmext ]; then
+                  extold="/usr/X11R6/lib/X11/dfm/dfmext"
+                  libdef="/usr/X11R6/lib/X11/dfm"
+                else
+                  if [ -e ../../.dfmext ]; then
+                    extold="~/.dfmext"
+                    libdef="~/dfm/share"
+                  fi
+                fi
+	      fi
+            fi
+          fi
+        fi
+      fi
+    fi
+  fi  
+
+  if ! [ $extold = "none" ]; then
+    echo
+    echo "It seems that there is already an installed version of dfm"
+    echo -n "Shall I reinstall the data-dir and dfmext ? (n)/y "
+    read reinstall
+    if [ -z $reinstall ] || [ $reinstall = "n" ]; then
+       echo 
+       echo "Current installation has been updated!"
+       echo 
+       if [ $typeon = "yes" ]; then
+         rm -f ${typeold#dfm is}
+       fi
+       cp ../dfm $installname
+       exit
+    else
+      echo rm -f $extold
+    fi
+  fi
+  
+  echo 
+  echo "Where do you want to install the dfm data directory?"
+  echo
+  echo "      1. /usr/local/share/dfm"
+  echo "      2. /usr/share/dfm"
+  echo "      3. /usr/local/lib/dfm"
+  echo "      4. ~/dfm/share"
+  echo "      5. place it in your own directory"
+  echo 
+  echo -n "your choise ( <CR>:$libdef ) : "
+  read choise
+  if [ -z $choise ]; then
+    installlib=$libdef
+  else
+    if [ $choise = "1" ]; then
+      installlib="/usr/local/share/dfm"
+    fi
+    if [ $choise = "2" ]; then
+      installlib="/usr/share/dfm"
+    fi
+    if [ $choise = "3" ]; then
+      installlib="/usr/local/lib/dfm"
+    fi
+    if [ $choise = "4" ]; then
+      installlib="~/dfm/share"
+    fi
+    if [ $choise = "5" ]; then
+      echo
+      echo "please enter full path (with .../dfm)"
+      read installlib
+    fi
+  fi
+  if [ -z $installlib ]; then
+    echo "You haven't choosen anything ... exiting ..."
+    exit
+  fi
+
+  if [ $extold = "none" ]; then
+    extold="/usr/local/etc/dfmext"
+  fi
+  if [ $installlib = "/usr/local/share/dfm" ]; then
+    extold="/usr/local/share/dfm/dfmext"
+  fi
+  if [ $installlib = "/usr/share/dfm" ]; then
+    extold="/usr/share/dfm/dfmext"
+  fi
+  if [ $installlib = "/usr/local/lib/dfm" ]; then
+    extold="/usr/local/lib/dfm/dfmext"
+  fi
+  if [ $installlib = "/usr/X11/lib/X11/dfm" ]; then
+      extold="/usr/X11/lib/X11/dfm/dfmext"
+  fi
+  if [ $installlib = "/usr/X11R6/lib/X11/dfm" ]; then
+     extold="/usr/X11R6/lib/X11/dfm/dfmext"
+    echo hallo
+  fi
+  if [ $installlib = "~/dfm/share" ]; then
+    extold="~/.dfmext"
+  fi
+  echo 
+  echo "Where do you want to install the dfmext file?"
+  echo
+  echo "      1. /usr/local/share/dfm/dfmext"
+  echo "      2. /usr/share/dfm/dfmext"
+  echo "      3. /etc/dfmext"
+  echo "      4. /usr/etc/dfmext"
+  echo "      5. /usr/local/etc/dfmext"
+  echo "      6. /usr/local/lib/dfm/dfmext"
+  echo "      7. ~/.dfmext"
+  echo 
+  echo -n "your choise ( <CR>:$extold ) : "
+  read choiseb
+  if [ -z $choiseb ]; then
+    installext=$extold
+  else
+    if [ $choiseb = "1" ]; then
+      installext="/usr/local/share/dfm/dfmext"
+    fi
+    if [ $choiseb = "2" ]; then
+      installext="/usr/share/dfm/dfmext"
+    fi
+    if [ $choiseb = "3" ]; then
+      installext="/etc/dfmext"
+    fi
+    if [ $choiseb = "4" ]; then
+      installext="/usr/etc/dfmext"
+    fi
+    if [ $choiseb = "5" ]; then
+      installext="/usr/local/etc/dfmext"
+    fi
+    if [ $choiseb = "6" ]; then
+      installext="/usr/local/lib/dfm/dfmext"
+    fi
+    if [ $choiseb = "7" ]; then
+      installext="~/.dfmext"
+    fi
+  fi
+  if [ -z $installlib ]; then
+    echo "You haven't choosen anything ... exiting ..."
+    exit
+  fi
+
+else
+  installname="~/bin/dfm"
+  installlib="~/dfm/share"
+  installext="~/.dfmext"
+  echo 
+  echo "You are normal user (not root)!"
+  echo "the only directory you can install dfm is ~/bin/dfm"
+  echo "Please do not delete the ~/dfm directory!"
+  echo
+  if [ -e ../../.dfmext ]; then
+    echo
+    echo "It seems that there is already an installed version of dfm"
+    echo -n "Shall I reinstall .dfmext ? (n)/y "
+    read reinstall
+    if [ -z $reinstall ] || [ $reinstall = "n" ]; then
+       echo "Current installation has been updated!"
+       cp ../dfm ~/bin/dfm
+       exit
+    else
+      echo rm -f ../../.dfmext
+    fi
+  fi
+fi
+
+if ! cc -o expandextension expandextension.c; then
+  echo "----------------------ERROR----------------------"
+  echo "Something went wrong during the compilation of"
+  echo "expandextension.c"
+  echo "Try to use the normal INSTALL way (read INSTALL)"
+  echo "-------------------------------------------------"
+  exit  
+fi
+
+if [ $typeon = "yes" ]; then
+  rm -f ${typeold#dfm is}
+fi
+
+if ! [ $installlib = "~/dfm/share" ]; then
+  ./mkinstalldirs $installlib $installname $installext 
+  rm -rf $installname
+  cp ../dfm $installname
+  rm -rf $installlib
+  cp -r ../share $installlib
+  rm -rf $installext
+  cat dfmext.in | ./expandextension "$installlib" > $installext
+else
+  ./mkinstalldirs ~/bin
+  cp ../dfm ~/bin
+  cp ../extensions/dfmext_user ~/.dfmext
+fi
+
+rm -f expandextension
+
+echo 
+echo "Ready!!! Now read START."
+

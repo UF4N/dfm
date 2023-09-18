@@ -1,0 +1,50 @@
+
+DFM - The Desktop-File-Manager for X11
+======================================
+
+Version 0.9.1
+
+DFM is a desktopmanager for linux and other UNIX-OS. Files are shown 
+as icons and every folder has it's own window. The desktopbackground 
+is a special folder in the homedirectory.
+
+The idea is to write a filemanager like the OS/2 WPS.
+
+Here are some features:
+
+* icons may have any size and position 
+* show XVPICS as icons
+* save icon and window info
+* iconname to cutbuffer (paste to xterm, ...)
+* "Constant position" icons that cannot be moved (or arranged)
+* easy adding new programs to the desktop
+* ...
+
+New since beta-4
+* Offix DND support
+* close dfm window while open a icon (SHIFT)
+* new color selector
+* able to stop copying procedure ("Stop" button)
+* enlightenment now works
+* "Arrange" now works correct
+* Some hotkeys
+* better structure view
+* SHIFT now copies the position of the parent window
+* bugfixes
+
+You need
+
+c-compiler, xforms >= 0.86, libXpm >= 4.7, libXext(XShapeExtension), X11, 
+16MB and a windowmanager
+
+Available from:
+http://www-c.informatik.uni-hannover.de/~kaiser/dfm/dfm.html ca. 195 kB
+
+Have fun and keep care: NO WARRANTY
+
+You may distribute under the terms of the GNU General Public License 
+as specified in the COPYING file.
+
+Achim
+
+kaiser@informatik.uni-hannover.de

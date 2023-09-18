@@ -1,0 +1,22 @@
+/* XPM */
+static char * littlefolder_xpm[] = {
+"15 13 6 1",
+" 	c NONE",
+".	c #8A288A288A28",
+"X	c #BAEABAEABAEA",
+"o	c #FFFFFFFF0000",
+"t	c #FFFFFFFFFFFF",
+"O	c #000000000000",
+"  .....        ",
+" .XoXoX.       ",
+".XoXoXoX...... ",
+".tttttttttttt.O",
+".toXoXoXoXoXo.O",
+".tXoXoXoXoXoX.O",
+".toXoXoXoXoXo.O",
+".tXoXoXoXoXoX.O",
+".toXoXoXoXoXo.O",
+".tXoXoXoXoXoX.O",
+".toXoXoXoXoXo.O",
+"..............O",
+" OOOOOOOOOOOOOO"};

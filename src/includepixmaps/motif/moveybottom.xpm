@@ -1,0 +1,13 @@
+/* XPM */
+static char *moveybottom_xpm[] = {
+/* width height num_colors chars_per_pixel */
+"    14     3        3            1",
+/* colors */
+". c #666666",
+"# c #cccccc",
+"a c #e5e5e5",
+/* pixels */
+"..aa######..aa",
+"..aa........aa",
+"..a.........aa"
+};

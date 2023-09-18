@@ -1,0 +1,5 @@
+find
+*.c;xemacs !0!
+*.gif;xv !0!
+*.exe;wine !0!
+*;xedit !0!

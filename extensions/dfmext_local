@@ -1,0 +1,56 @@
+core;/usr/local/share/dfm/icons/icon_core.xpm;ddd !0!
+Makefile;/usr/local/share/dfm/icons/icon_makefile.xpm;make
+xterm;/usr/local/share/dfm/icons/icon_xterm.xpm;!0! -sb -sl 500 
+lpr;/usr/local/share/dfm/icons/icon_printer.xpm;!0! 
+xedit;/usr/local/share/dfm/icons/icon_editor.xpm;!0! 
+*.exe;/usr/local/share/dfm/icons/icon_binary_ms.xpm;wine !0!
+*.au;/usr/local/share/dfm/icons/icon_audio.xpm;cp !0! /dev/audio
+*.wav;/usr/local/share/dfm/icons/icon_audio.xpm;play !0!
+*.s3m;/usr/local/share/dfm/icons/icon_audio.xpm;xterm -e s3mod -s !0!
+*.mod;/usr/local/share/dfm/icons/icon_audio.xpm;xterm -e s3mod -s !0!
+*.mid;/usr/local/share/dfm/icons/icon_audio_midi.xpm;xplaymidi !0!
+*.mp3;/usr/local/share/dfm/icons/icon_audio.xpm;mxaudio !0!
+*.dip;/usr/local/share/dfm/icons/icon_phone.xpm;dip !0!
+*.ps;/usr/local/share/dfm/icons/icon_ps.xpm;ghostview !0!
+*.dvi;/usr/local/share/dfm/icons/icon_document_print.xpm;xdvi !0!
+*.tex;/usr/local/share/dfm/icons/icon_document_tex.xpm;xedit !0!
+*.lyx;/usr/local/share/dfm/icons/icon_document_lyx.xpm;lyx !0!
+*.txt;/usr/local/share/dfm/icons/icon_text.xpm;xedit !0!
+*.mov;/usr/local/share/dfm/icons/icon_video.xpm;xanim +Sr +B +b +f !0!
+*.avi;/usr/local/share/dfm/icons/icon_video.xpm;xanim +Sr +B +b +f !0!
+*.mpg;/usr/local/share/dfm/icons/icon_video.xpm;xanim +Sr +B +b +f !0!
+*.mpeg;/usr/local/share/dfm/icons/icon_video.xpm;xanim +Sr +B +b +f !0!
+*.fli;/usr/local/share/dfm/icons/icon_video.xpm;xanim +Sr +B +b +f !0!
+*.flc;/usr/local/share/dfm/icons/icon_video.xpm;xanim +Sr +B +b +f !0!
+*.htm;/usr/local/share/dfm/icons/icon_html.xpm;netscape !0!
+*.html;/usr/local/share/dfm/icons/icon_html.xpm;netscape !0!
+*.c;/usr/local/share/dfm/icons/icon_c.xpm;xedit !0!
+*.cc;/usr/local/share/dfm/icons/icon_cc.xpm;xedit !0!
+*.c++;/usr/local/share/dfm/icons/icon_cc.xpm;xedit !0!
+*.C;/usr/local/share/dfm/icons/icon_cc.xpm;xedit !0!
+*.h;/usr/local/share/dfm/icons/icon_h.xpm;xedit !0!
+*.o;/usr/local/share/dfm/icons/icon_o.xpm;xedit !0!
+*.a;/usr/local/share/dfm/icons/icon_a.xpm;xedit !0!
+*.gif;/usr/local/share/dfm/icons/icon_picture.xpm;xv !0!
+*.jpg;/usr/local/share/dfm/icons/icon_picture.xpm;xv !0!
+*.bmp;/usr/local/share/dfm/icons/icon_picture.xpm;xv !0!
+*.ppm;/usr/local/share/dfm/icons/icon_picture.xpm;xv !0!
+*.pgm;/usr/local/share/dfm/icons/icon_picture.xpm;xv !0!
+*.tga;/usr/local/share/dfm/icons/icon_picture.xpm;xv !0!
+*.pbm;/usr/local/share/dfm/icons/icon_bitmap.xpm;xv !0!
+*.tif;/usr/local/share/dfm/icons/icon_picture.xpm;xv !0!
+*.tiff;/usr/local/share/dfm/icons/icon_picture.xpm;xv !0!
+*.xpm;/usr/local/share/dfm/icons/icon_picture.xpm;xv !0!
+*.xbm;/usr/local/share/dfm/icons/icon_bitmap.xpm;xv !0!
+*.fig;/usr/local/share/dfm/icons/icon_fig.xpm;xfig !0!
+*.tar*;/usr/local/share/dfm/icons/icon_archive.xpm;xtar !0!
+*.tgz;/usr/local/share/dfm/icons/icon_archive.xpm;xtar !0!
+*.taz;/usr/local/share/dfm/icons/icon_archive.xpm;xtar !0!
+*.gz;/usr/local/share/dfm/icons/icon_gzip.xpm;xterm -e zless !0!
+Trashcan/;/usr/local/share/dfm/icons/icon_folder_trashcan.xpm;dfm !0! -detail
+.linktohomedir/;/usr/local/share/dfm/icons/icon_folder.xpm;dfm !0!
+.linktorootdir/;/usr/local/share/dfm/icons/icon_folder.xpm;dfm !0! -structure
+*/;/usr/local/share/dfm/icons/icon_folder.xpm;dfm !0!
+.*;/usr/local/share/dfm/icons/icon_settings.xpm;xedit !0!
+*;/usr/local/share/dfm/icons/icon_file.xpm;xedit !0!
+/usr/local/share/dfm/icons/icon_binary.xpm;!0!

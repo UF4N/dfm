@@ -1,0 +1,8 @@
+#!/bin/sh
+
+make clean
+rm -f Makefile
+rm -f utils/Makefile
+rm -f src/Makefile
+rm -f src/version.h
+echo "-------- DFM-source deconfiguration successfull --------"

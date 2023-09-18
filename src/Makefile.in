@@ -1,0 +1,33 @@
+INCLUDEPATHS = -I. -I/usr/include/X11 -I/usr/local/include\
+-I/usr/openwin/include -I/usr/openwin/include/X11 -I/usr/X11R6/include
+LIBRARYPATHS = -L/usr/lib -L/usr/local/lib -L/usr/X11/lib -L/usr/X11R6/lib
+
+#------- you may not edit the lines below -------
+
+CFLAGS = $(SYSTEM) $(ISGZIP) $(INCLUDEPATHS) 
+
+OBJECTS = positiontext.o shell.o extension.o filemanager.o iwc.o\
+main.o iconmanager.o global.o namedemultiplexer.o xvpic.o menus.o\
+createicon.o loadicon.o testinstall.o windowname.o color.o timer.o\
+pixmap.o gif.o windowposition.o detailtitle.o freeze.o\
+positionarrange.o arcwindow.o fnmatch.o gui.o options.o\
+selectcolor.o shellgui.o ClientWin.o
+
+LIBRARYS = -lforms -lXpm -lX11 -lm -lXext $(LIBGZIP)
+
+all:../dfm
+
+../dfm:$(OBJECTS)
+	$(CC) $(CFLAGS) -o ../dfm $(OBJECTS) $(LIBRARYPATHS) $(LIBRARYS) 
+
+static:$(OBJECTS)
+	$(CC) $(CFLAGS) -o ../dfm -static $(OBJECTS) $(LIBRARYPATHS) $(LIBRARYS) 
+
+dev:$(OBJECTS)
+	$(CC) $(CFLAGS) -o ../dfm $(OBJECTS) $(LIBRARYPATHS) $(LIBRARYS)
+	-killall dfm
+	cp ../dfm /usr/local/bin/dfm
+
+clean:
+	rm -f $(OBJECTS) ../dfm
+

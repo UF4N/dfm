@@ -1,0 +1,20 @@
+/* XPM */
+static char * movexmainright_p_xpm[] = {
+"14 14 3 1",
+" 	c #861782078617",
+".	c #FFFFFFFFFFFF",
+"X	c #CF3CCF3CCF3C",
+"             .",
+"............X.",
+".XXXXXXXXXXX .",
+".XXXX.XXXXXX .",
+".XXXX..XXXXX .",
+".XXXXX..XXXX .",
+".XXXXXX..XXX .",
+".XXXXXX..XXX .",
+".XXXXX..XXXX .",
+".XXXX..XXXXX .",
+".XXXX.XXXXXX .",
+".XXXXXXXXXXX .",
+"X            .",
+".............."};

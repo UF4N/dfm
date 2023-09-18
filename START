@@ -1,0 +1,30 @@
+How to start DFM:
+=================
+
+There are many ways to start DFM. For example by using the ".xinitrc" file, 
+the ".xsession" file, the initfile of the windowmanager or last but not least
+by directly executing in a xterm. The last one is shown here:
+
+1. Start X11 (with a windowmanager)
+2. Open a new "xterm"
+3. Type:
+   >dfm
+4. The DFM-desktop appears with two or more icons in the 
+   upper-left corner of the screen. The context of the 
+   windowmanager is available in the last line of the screen
+   or by first pressing the middle mouse key.
+5. Have Fun!!! :-)
+---------------------------------------------------------------------------
+How to stop DFM:
+================
+
+Choose:
+
+a. Open an "xterm" and type:
+   >killall dfm
+
+b. If you only want to leave XWindow: The contextmenu of the 
+   windowmanager is available in the last line of the screen
+   or by first pressing the middle mouse key. :-)
+
+c. In the contextmenu "DFM for X11 => Quit DFM" ! 

@@ -1,0 +1,20 @@
+Begin3
+Title:          DFM for X11
+Version:        0.9.1
+Entered-date:   31JAN97
+Description:    DFM is a desktopmanager for linux and other UNIX-OS. 
+                Files are shown as icons and every folder has it's own 
+                window. The desktopbackground (rootwindow) is 
+                a special folder in the homedirectory. The idea is to write
+                a filemanager like the OS/2 WPS.
+Keywords:       desktop, filemanager, X, desktopmanager, icons, xforms.
+Author:         kaiser@informatik.uni-hannover.de (Achim Kaiser)
+Maintained-by:  kaiser@informatik.uni-hannover.de (Achim Kaiser)
+Primary-site:   sunsite.unc.edu /pub/Linux/X11/desktop/
+                195 kB dfm-0.9.1.tar.gz
+                908 b  dfm.lsm
+Alternate-site: 
+Original-site:  http://www-c.informatik.uni-hannover.de/~kaiser/dfm/dfm.html
+Platforms:      gcc, xforms, libXpm, libXext, X11
+Copying-policy: GPL
+End

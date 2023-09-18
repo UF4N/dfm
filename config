@@ -1,0 +1,62 @@
+#!/bin/sh
+
+name=`uname -s`
+mname=`uname -m`
+
+case $name in
+             *Linux) echo "SYSTEM = -DLINUX" > src/Makefile;;
+             *SunOS) echo "SYSTEM = -DSUNOS" > src/Makefile;;
+             *IRIX)  echo "SYSTEM = -DIRIX" > src/Makefile;;
+             **)  echo "SYSTEM = -DOTHER" > src/Makefile;;
+esac
+
+case $mname in
+             *i486) mnamed="-m486" ;;
+#             *i686) mnamed="-mpentiumpro" ;; # gcc-2.8
+             **)  mnamed="";;
+esac
+
+if type gcc; then
+   echo "CC = gcc -O2 -Wall -pedantic "$mnamed >> src/Makefile
+else
+   echo "CC = cc -O2" >> src/Makefile
+fi
+
+if [ -f /usr/include/zlib.h ] || [ -f /usr/local/include/zlib.h ]; then
+  if [ -f /usr/lib/libz.so ] || [ -f /usr/local/lib/libz.so ]; then
+    echo "LIBGZIP = -lz" >> src/Makefile
+    echo "ISGZIP= -DGZIP" >> src/Makefile
+    echo >> src/Makefile
+  else
+    if [ -f /usr/lib/libgz.so ] || [ -f /usr/local/lib/libgz.so ]; then
+      echo "LIBGZIP = -lgz" >> src/Makefile
+      echo "ISGZIP = -DGZIP" >> src/Makefile
+      echo >> src/Makefile
+    fi
+  fi
+fi
+
+cat Makefile.config > Makefile
+cat src/Makefile > utils/Makefile
+cat src/Makefile.in >> src/Makefile
+cat utils/Makefile.in >> utils/Makefile
+
+ver=`cat VERSION`
+echo "#define VERSION \"Version "`echo $ver`"\"" > src/version.h
+
+make clean
+
+echo
+if [ $name = "Linux" ] || [ $name = "SunOS" ] || [ $name = "IRIX" ]; then
+  echo "'$name' has been successfully configured."
+  echo "Now type 'make'. If it won't work try to edit the"
+  echo "Makefile in src/ and mail me."
+else
+  echo "'$name' is not currently supported."
+  echo "Using standard configuration."
+  echo "Now type 'make'. Good luck!"
+  echo 
+  echo "Be carefully while copying/moving files!!!"
+  echo "Please write me a mail on success."
+fi
+

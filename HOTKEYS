@@ -1,0 +1,13 @@
+There are some new hotkeys in the first step of adding keyboad support:
+
+ESC    Update (deselect files)
+
+CTRL+d activate detail view of the Current Directory
+CTRL+n normal view
+CTRL+s structure view
+
+CTRL+a select all (files)
+CTRL+y sort icons
+CTRL+f create folder
+
+CTRL+q quit window

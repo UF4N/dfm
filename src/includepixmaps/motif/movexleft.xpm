@@ -1,0 +1,24 @@
+/* XPM */
+static char *movexleft_xpm[] = {
+/* width height num_colors chars_per_pixel */
+"     3    14        3            1",
+/* colors */
+". c #666666",
+"# c #cccccc",
+"a c #e5e5e5",
+/* pixels */
+"...",
+"...",
+"aaa",
+"aaa",
+"aa#",
+"aa#",
+"aa#",
+"aa#",
+"aa#",
+"aa#",
+"aa.",
+"a..",
+"aaa",
+"aaa"
+};

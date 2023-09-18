@@ -1,0 +1,76 @@
+General helpfile for DFM
+
+1. Compile problems
+2. Starting/Installing problems
+3. Working problems 
+4. Contact adresses
+
+Please read this file before asking for help:
+
+1. Compile problems
+
+- First of all make sure, that you have done: >./config
+
+- can't find forms.h
+  * make sure that you have the xforms library (see DFM-homepage)
+  * forms.h must be in an directory specified in the Makefile with
+    -I<dirname> 
+    add the dirname and mail the dirname to me.
+
+- an error with fl_initalize
+  * make sure that you have xforms 0.86 or above.
+
+- an error with fl_slider ... 
+  * make sure that you have xforms 0.86 or above.
+
+- unresolved symbol/reference
+  * the files "libXpm.so.4.x" and "libforms.so.0.8x" must be in a
+    Directory specified in the Makefile with
+    -L<dirname>
+    add the dirname and mail the dirname to me.
+
+2. Start/Install problems
+
+- DFM exit on the console and everything seems to work. 
+  * This is normal.
+
+- There are some error messages with "type" and "rm"
+  * This is normal.
+
+- DFM exit on the console and the desktop doesn't appear.
+  * Make sure that you have libXpm 4.7 or above.
+  * Make sure that no window hides the icons. (Press right mouse on the
+    rootwindow)
+
+- The desktop appear with "NO ICON" icons. (DFM can't find the icons)
+  * Make sure, that you have done "make install" in the right way.
+  * Read INSTALL once again.
+  * You may install dfm manually: Copy "dfm" to a binary-directory.
+    Copy "libdfm" to a folder you want to (you may change the name). 
+    Copy "extentions/dfmext_normal" to "~/.dfmext", "/etc/dfmext", 
+    "/usr/etc/dfmext" or "/usr/local/etc/dfmext". Edit the dfmext file 
+    according to the icons in the copied "libdfm" folder.
+
+3. Working problems 
+
+* See BUGS
+
+- DFM shoots the XServer sometimes.
+  * Try another wm. Mail me the problem.
+
+- DFM don't save the info of the desktop. I've proved the settings in 
+  each window ...
+  * Make sure you have done "DFM for X -> Save position/info"
+
+- The information of some windows will not be saved.
+  * Take a look into the options of the window. Look at Windowinfo...
+    and Iconinfo...
+
+4. Contact adresses
+  
+  for problems with DFM mail to Achim Kaiser:
+  kaiser@informatik.uni-hannover.de
+
+  for problems with EXM mail to George R. Welch:
+  grw@tamu.edu
+

@@ -1,0 +1,21 @@
+INCLUDEPATHS = -I. -I/usr/include/X11 -I/usr/local/include\
+-I/usr/openwin/include -I/usr/openwin/include/X11 -I/usr/X11R6/include
+LIBRARYPATHS = -L/usr/lib -L/usr/local/lib -L/usr/X11/lib -L/usr/X11R6/lib
+
+#------- you may not edit the lines below -------
+
+CFLAGS = $(SYSTEM) $(ISGZIP) $(INCLUDEPATHS) 
+
+all:ppmtoxvpic launch rootcursor
+
+ppmtoxvpic:ppmtoxvpic.c
+	$(CC) $(CFLAGS) $(LIBRARYPATHS) -o ppmtoxvpic ppmtoxvpic.c
+
+launch:launch.c
+	$(CC) $(CFLAGS) $(LIBRARYPATHS) -o launch launch.c
+
+rootcursor:rootcursor.c
+	$(CC) $(CFLAGS) $(LIBRARYPATHS) -o rootcursor rootcursor.c -lX11
+
+clean:
+	rm -f ppmtoxvpic launch rootcursor

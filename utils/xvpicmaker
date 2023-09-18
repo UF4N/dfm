@@ -1,0 +1,90 @@
+#!/bin/sh
+
+if  [ $# = 0 ] || [ $1 = "-h" ] || [ $1 = "--help" ];
+then
+  echo "Usage: xvpicmaker FILE1 [FILE2 ...]"
+  echo "  or:  xvpicmaker DIRECTORY"
+  echo "Create the .xvpics directory and icons"
+  echo
+  echo "The .xvpics directory'll be removed and recreated if you give a"
+  echo "directory name."
+  echo "Version 1  (gif,jpg,pcx,bmp,tif,tga)"
+  echo
+fi
+
+if  [ $# = 1 ] && test -d $1 ;
+then
+  rm -rf $1/.xvpics
+  for name in $1/*; do
+    if test ! -d $name 
+    then
+       xvpicmaker $name 
+    fi
+  done
+else
+  for name do
+    if test -d $name 
+    then
+      echo "directory:'$name'"
+    else
+       case $name in
+                  **.gif) echo "create icon :'$name'" 
+                          if test ! -d ${name%/*}/.xvpics 
+                          then
+                            mkdir ${name%/*}/.xvpics 
+                          fi 
+                          cat $name |
+                          giftopnm | 
+                          pnmscale -xysize 80 60| 
+                          ppmtoxvpic > ${name%/*}/.xvpics/${name##*/} ;;
+                  **.jpg) echo "create icon :'$name'" 
+                          if test ! -d ${name%/*}/.xvpics 
+                          then
+                            mkdir ${name%/*}/.xvpics 
+                          fi 
+                          cat $name | 
+                          djpeg | 
+                          pnmscale -xysize 80 60| 
+                          ppmtoxvpic > ${name%/*}/.xvpics/${name##*/} ;;
+                  **.pcx) echo "create icon :'$name'" 
+                          if test ! -d ${name%/*}/.xvpics 
+                          then
+                            mkdir ${name%/*}/.xvpics 
+                          fi 
+                          cat $name | 
+                          pcxtoppm | 
+                          pnmscale -xysize 80 60| 
+                          ppmtoxvpic > ${name%/*}/.xvpics/${name##*/} ;;
+                  **.bmp) echo "create icon :'$name'" 
+                          if test ! -d ${name%/*}/.xvpics 
+                          then
+                            mkdir ${name%/*}/.xvpics 
+                          fi 
+                          cat $name | 
+                          bmptoppm | 
+                          pnmscale -xysize 80 60| 
+                          ppmtoxvpic > ${name%/*}/.xvpics/${name##*/} ;;
+                  **.tif) echo "create icon :'$name'" 
+                          if test ! -d ${name%/*}/.xvpics 
+                          then
+                            mkdir ${name%/*}/.xvpics 
+                          fi 
+                          cat $name | 
+                          tifftopnm | 
+                          pnmscale -xysize 80 60| 
+                          ppmtoxvpic > ${name%/*}/.xvpics/${name##*/} ;;
+                  **.tga) echo "create icon :'$name'" 
+                          if test ! -d ${name%/*}/.xvpics 
+                          then
+                            mkdir ${name%/*}/.xvpics 
+                          fi 
+                          cat $name | 
+                          tgatoppm | 
+                          pnmscale -xysize 80 60| 
+                          ppmtoxvpic > ${name%/*}/.xvpics/${name##*/} ;;
+       esac
+    fi
+  done
+fi
+
+echo "done."

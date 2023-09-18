@@ -1,0 +1,59 @@
+core;@/icons/icon_core.xpm;ddd !0!
+Makefile;@/icons/icon_makefile.xpm;make
+xterm;@/icons/icon_xterm.xpm;!0! -sb -sl 500 
+lpr;@/icons/icon_printer.xpm;!0! 
+xedit;@/icons/icon_editor.xpm;!0! 
+*.exe;@/icons/icon_binary_ms.xpm;wine !0!
+*.au;@/icons/icon_audio.xpm;cp !0! /dev/audio
+*.wav;@/icons/icon_audio.xpm;play !0!
+*.mod;@/icons/icon_audio.xpm;xterm -e mikmod !0!
+*.s3m;@/icons/icon_audio.xpm;xterm -e mikmod !0!
+*.669;@/icons/icon_audio.xpm;xterm -e mikmod !0!
+*.xm;@/icons/icon_audio.xpm;xterm -e mikmod !0!
+*.mid;@/icons/icon_audio_midi.xpm;xplaymidi !0!
+*.mp3;@/icons/icon_audio.xpm;mxaudio !0!
+*.pdf;@/icons/icon_pdf.xpm;xpdf !0!
+*.dip;@/icons/icon_phone.xpm;dip !0!
+*.ps;@/icons/icon_ps.xpm;ghostview !0!
+*.dvi;@/icons/icon_document_print.xpm;xdvi !0!
+*.tex;@/icons/icon_document_tex.xpm;xedit !0!
+*.lyx;@/icons/icon_document_lyx.xpm;lyx !0!
+*.txt;@/icons/icon_text.xpm;xedit !0!
+*.mov;@/icons/icon_video.xpm;xanim +Sr +B +b +f !0!
+*.avi;@/icons/icon_video.xpm;xanim +Sr +B +b +f !0!
+*.mpg;@/icons/icon_video.xpm;mpeg_play !0!
+*.mp3;@/icons/icon_audio.xpm;mxaudio !0!
+*.fli;@/icons/icon_video.xpm;xanim +Sr +B +b +f !0!
+*.flc;@/icons/icon_video.xpm;xanim +Sr +B +b +f !0!
+*.htm;@/icons/icon_html.xpm;netscape !0!
+*.html;@/icons/icon_html.xpm;netscape !0!
+*.c;@/icons/icon_c.xpm;xedit !0!
+*.cc;@/icons/icon_cc.xpm;xedit !0!
+*.c++;@/icons/icon_cc.xpm;xedit !0!
+*.C;@/icons/icon_cc.xpm;xedit !0!
+*.h;@/icons/icon_h.xpm;xedit !0!
+*.o;@/icons/icon_o.xpm;xedit !0!
+*.a;@/icons/icon_a.xpm;xedit !0!
+*.gif;@/icons/icon_picture.xpm;xv !0!
+*.jpg;@/icons/icon_picture.xpm;xv !0!
+*.bmp;@/icons/icon_picture.xpm;xv !0!
+*.ppm;@/icons/icon_picture.xpm;xv !0!
+*.pgm;@/icons/icon_picture.xpm;xv !0!
+*.tga;@/icons/icon_picture.xpm;xv !0!
+*.pbm;@/icons/icon_bitmap.xpm;xv !0!
+*.tif;@/icons/icon_picture.xpm;xv !0!
+*.tiff;@/icons/icon_picture.xpm;xv !0!
+*.xpm;@/icons/icon_picture.xpm;xv !0!
+*.xbm;@/icons/icon_bitmap.xpm;xv !0!
+*.fig;@/icons/icon_fig.xpm;xfig !0!
+*.tar*;@/icons/icon_archive.xpm;xtar !0!
+*.tgz;@/icons/icon_archive.xpm;xtar !0!
+*.taz;@/icons/icon_archive.xpm;xtar !0!
+*.gz;@/icons/icon_gzip.xpm;xterm -e zless !0!
+Trashcan/;@/icons/icon_folder_trashcan.xpm;dfm !0! -detail
+.linktohomedir/;@/icons/icon_folder.xpm;dfm !0!
+.linktorootdir/;@/icons/icon_folder.xpm;dfm !0! -structure
+*/;@/icons/icon_folder.xpm;dfm !0!
+.*;@/icons/icon_settings.xpm;xedit !0!
+*;@/icons/icon_file.xpm;xedit !0!
+@/icons/icon_binary.xpm;!0!

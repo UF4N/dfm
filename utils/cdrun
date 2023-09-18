@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if  [ $# = 0 ]; then
+  echo "Usage: $0 [program] [args]"
+  echo "cd to the folder of the program and start it"
+else
+  for name do
+    komm=`echo "$komm $name"`
+  done 
+  zw=$1
+  cd ${zw%/*}
+  exec $komm &
+fi

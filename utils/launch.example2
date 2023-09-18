@@ -1,0 +1,8 @@
+ldd;file
+*libX11*;*;!0!
+*;*wish*;!0!
+*;*Windows*;wine !0!
+*;*MS-DOS executable*;echo "How to start a DOS-program ?" !0!
+*;*shell*;xterm -e !0!
+*;*executable*;xterm -e !0!
+*;*;xedit !0!

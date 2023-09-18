@@ -1,0 +1,18 @@
+TO DO for DFM (help not needed)
+* add keyboard support
+* use less memory in detail view !!!
+* bugs
+---- V1.0 ? ----
+* add a trashcan
+* use file program to recognize filetype
+* add GIF support
+* add a submenu of programs to the contextmenu
+* additional structure-view with files ? (A la Mac)
+* speed
+* ...
+
+TO DO other things (help needed)
+* Create new icons.
+* Write a fontselectprogram which is better than xfontsel.
+* Write utilities ...
+* ...

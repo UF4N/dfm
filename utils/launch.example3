@@ -1,0 +1,3 @@
+grep greetings;file
+*greetings*;*English text*;xedit !0!
+*;*;xemacs !0!

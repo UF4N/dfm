@@ -1,0 +1,22 @@
+/* XPM */
+static char * menuarrow_xpm[] = {
+"16 15 4 1",
+" 	c #820782078207",
+".	c #FFFFFFFFFFFF",
+"X	c #CF3CCF3CCF3C",
+"o	c #000000000000",
+"                ",
+" .............. ",
+" .XXXXXXoXXXXX  ",
+" .XXXXXXooXXXX  ",
+" .XXXXXXoooXXX  ",
+" .XXooooooooXX  ",
+" .XXoooooooooX  ",
+" .XXooooooooXX  ",
+" .XXXXXXoooXXX  ",
+" .XXXXXXooXXXX  ",
+" .XXXXXXoXXXXX  ",
+" .XXXXXXXXXXXX  ",
+" .XXXXXXXXXXXX  ",
+"                ",
+"                "};

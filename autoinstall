@@ -1,0 +1,18 @@
+#!/bin/bash
+
+echo
+echo "Welcome to autoinstall!"
+echo "======================="
+echo
+echo "Autoinstall will automatically test your system and"
+echo "install DFM if possible."
+echo "Be carefully using this script (very alpha) ! NO WARRANTY !!!"
+echo "Mail me any problems! You have to install the manpage manually!"
+echo
+echo "If you want to do this press CTRL-D otherwise CTRL-C."
+cat > /dev/null
+echo "Ok!"
+echo 
+
+(cd installation ; ./installationtest)
+

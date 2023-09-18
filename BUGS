@@ -1,0 +1,10 @@
+Here are some of the known bugs:
+
+Bugs/Limitations
+
+* Something is wrong with "xterm" and the cutbuffer!?
+* The pixmap button in the option window doesn't work correct.
+* DFM doesn't copy the fileinfo recursive. (copy, rename)
+* Sometimes files can't be deleted (only VFAT ? VFAT bug ? )
+* DFM shoots the XServer on a Sun ?
+

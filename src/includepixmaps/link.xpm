@@ -1,0 +1,18 @@
+/* XPM */
+static char * link_xpm[] = {
+"11 11 4 1",
+" 	c #861782078617",
+".	c #000000000000",
+"X	c #49244D344924",
+"o	c #FFFFFFFFFFFF",
+"          .",
+" XXXXXXXXX.",
+" XXXooooXX.",
+" XXXXoooXX.",
+" XXXooooXX.",
+" XXoooXoXX.",
+" XXooXXXXX.",
+" XXoXXXXXX.",
+" XXXoXXXXX.",
+" XXXXXXXXX.",
+"..........."};

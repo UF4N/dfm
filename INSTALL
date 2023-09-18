@@ -1,0 +1,61 @@
+How to COMPILE and INSTALL DFM:
+===============================
+
+You need: a c-compiler, xforms, libXpm, libXext, X11
+
+In order to COMPILE make sure, that you are in the top of the DFM-hierarchy.
+Now type:
+
+>./config
+>make
+
+It should compile under Linux, SunOS and IRIX.
+--------------------------------------------------------------------------
+The INSTALLationprocedure is also simple. Choose one of the following ways:
+
+- If you are *updating* from alpha-6 or later simply copy the "dfm" binary 
+  to your bin path.
+
+These ways will delete your previous dfm-library directory:
+
+- If you want to install DFM in "/usr/local/bin/" and "/usr/local/share/"
+  type the following (as root):
+
+  >make install
+
+- If you want to install DFM in "/usr/X11/bin/" and "/usr/share/"
+  type the following (as root):
+
+  >make install_dist
+
+- You may install dfm manually: Copy "dfm" to a binary-directory.
+  Copy "lib" to a folder you want to (you may change the name).
+  Copy "extentions/dfmext_normal" to "~/.dfmext", "/etc/dfmext",
+  "/usr/etc/dfmext" or "/usr/local/etc/dfmext". Edit the dfmext file
+  according to the icons in the "lib" folder.
+
+- If you are an normal user make sure that "~/bin" is in your path and
+  exist. Also make sure that you are in "~/dfm" !!! After the installation 
+  don't delete the "~/dfm" folder !!! Type the following (as user):
+
+  >make install_user
+
+Well done!!! Now read the "START" file.
+--------------------------------------------------------------------------
+How to UNINSTALL DFM:
+=====================
+
+Choose your way:
+
+- If you want to delete the DFM installation as normal user type the
+  following:
+
+  >make uninstall_user
+
+  after that delete manually ".dfmdesk/", ".dfminfo" and ".dfmext"
+
+- If you want to delete DFM as root type:
+
+  >make uninstall
+
+  This will delete all folders and files in all possible installationpaths.

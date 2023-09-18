@@ -1,0 +1,430 @@
+.TH DFM 1x
+
+.SH NAME
+
+dfm - a filemanager for X
+
+.SH SYNOPSIS
+
+.B dfm
+.br
+.B dfm
+\fIdirectory\fP [-detail|-structure]
+.br
+.B dfm
+-setdir \fIdirectory\fP 
+.br
+.B dfm
+-setfile \fIfile\fP...
+
+.SH DESCRIPTION
+
+DFM is a drag-and-drop file- and desktopmanager for X11. It should be
+used in conjunction with a X window manager such as twm, fvwm or
+afterstep.
+
+.SH USAGE
+
+THERE IS NO WARRANTY.
+.PP
+You may distribute under the terms of the GNU General Public
+License as specified in the COPYING file.
+.PP
+Copyright 1997 by Achim Kaiser
+
+.SH START
+
+If you start DFM for the first time it will create a directory named
+"~/.dfmdesk" in the homedirectory. All files, directories or links in
+this ~/.dfmdesk will hereafter be visible as icons on the root window
+of your window manager. Icons that refer to links will have a tiny
+arrow attached to the lower right of the original icon.
+.br
+
+After creation of this directory dfm will by default install a number
+of links in this directory: ".linktohomedir", which points to your
+home directory and ".linktorootdir", which points to the root
+directory of the filesystem. Then it creates some links to a number of
+popular programs, such as xedit and xv, if available on your system.
+.br
+
+When dfm is started without parameters (typically in .Xclients or a
+similar file) it displays the objects that are exist as links or
+files in the .dfmdesk-directory as icons. ".linktorootdir" is shown as
+the icon of a folder with the title "/" and ".linktohomedir" is shown
+as a folder with the title "~/". If a directory window is opened by
+double-clicking the corresponding icon with the mouse, a new instance
+of dfm is spawned that displays the information for the files in that
+directory.
+
+You can open new directory windows from the command line by invoking
+dfm with parameters. If you try to run dfm this way before having
+started the main instance, it will wait 30 seconds to see if the main
+instance will become active; if not it ends itself automatically.
+
+.SH COMMAND LINE OPTIONS
+
+DFM does not accept any of the common X options. Don't use the
+\fI-geometry\fP or \fI-display\fP options. DFM will read the DISPLAY
+variable of the shell instead.  The geometry of a window will be set
+automatically (see USING DFM).
+
+.TP 4
+.B -detail
+Show the directory in detail mode. 
+.TP 4
+.B -structure
+Show the directory in tree mode. 
+.TP 4
+.B directory-name
+Show the directory in icon mode. 
+.TP 4
+.B -setfile
+If you have specified a single file, a fileoptions window
+opens in single mode. Otherwise a fileoptions window opens
+in multiple mode.
+.TP 4
+.B -setdir
+A windowoptions window opens. 
+
+.SH CONCEPT
+
+The concept of DFM is very easy: Every new window reports its position
+and backgroundpixmap to the main instance of dfm. It also reports the
+information about its files to this instance. In this manner the
+position, icon and shellcommand of every file is known. If you end DFM
+without saving you will loose the information, unless you use the
+"save positions" command.
+
+.SH USING DFM
+
+.TP 4
+.B files
+Dfm keeps the information about saved windows in the file ".dfminfo" in
+the home directory. This file cannot be edited by the user. If it gets
+erased or corrupted you can generate a new .dfminfo file by the 'save
+positions' command.
+.br
+
+DFM also needs the ".dfmext" file. If this file cannot be found in the
+homedirectory DFM will look for the file "dfmext" in the directory
+"/usr/X11R6/lib/X11/dfm/", where it also keeps the backgrounds and
+icons.
+
+You can edit the ".dfmext" file using a normal text editor. It contains a
+list with the extensions of filenames, the names of the associated
+icons and the action that has to be taken when activated by clicking
+or dropping. The format is "extension;icon;command&command&...". DFM 
+will take the first line that fits the extension.
+
+For example:
+.br
+
+   "*.gif;/usr/X11/lib/X11/dfm/picicon.xpm;xv !0!" 
+.br
+
+would describe the icon for files with the extension ".gif" and the
+action to be taken when the file is double-clicked. The string !0! at
+the end refers to the expanded filename and must be present.
+
+\fINote:\fP There is no difference between ';' and LF in the format.
+.br
+
+
+The ".dfmdesk/" directory is already described in the START section.
+
+
+.TP 4
+.B Using the mouse
+Manipulation of files and directories in dfm is done by
+double-clicking on icons with the lefthand mouse button or dragging
+the icons over the desktop and dropping them on other icons that
+represent either directories or executables.
+.br
+
+\fINo keys pressed\fP. When dropping a file- or directory icon on a
+directory icon or a directory window, this causes a move (\fImv\fP)
+operation from the first location of the file to the directory it is
+dragged to.
+
+\fISHIFT-key pressed\fP. If the icon is dragged when the SHIFT-key is
+pressed, the file is not moved. A symbolic link is made instead.
+
+\fICTRL-key pressed\fP. If the icon is dragged while the CTRL-key is
+pressed, the file is not moved. Instead, a copy of the file is made,
+as if \fIcp\fP was used with the -rdp options (according to the syntax
+of the GNU \fImv\fP as used by Linux).
+
+\fISHIFT and CTRL-keys presssed\fP. If both CTRL and SHIFT are
+pressed, a copy like "\fIcp -r\fP" is executed (follows links).
+
+Programs are launched by double-clicking the program icon.
+
+If the icon of a (data-)file is double-clicked, the action described
+in the shellcommand for the file is executed. Generally this wil cause
+an executable to be launched with the file that is represented by the
+icon as parameter.
+
+If an icon is dragged on the icon of an executable, the executable is
+started with the icon list as a parameter.
+
+
+You can group icons, either by dragging a rectangle around them or by
+clicking each individual icon while pressing the CRTL key. The
+objects thus selected will be highlighted. If now you activite the context
+menu (see below) by clicking on one of the highlighted items, the
+actions that you select, e.g. 'delete', will be executed for all
+highlighted items.
+
+
+.TP 4
+.B the context menu 
+Pressing the righthand mouse button while the pointer is on the
+desktop, an icon or a filewindow, will cause a small menu (the
+\fIcontext menu\fP) to pop up. Also, an oval will appear on the
+desktop or window, indicating which object exactly is referred to.
+The context menu contains the following options. If they are followed
+by an arrow, the option will contain a new pop-up menu with more
+options. If an option at a certain point is not applicable, it is
+greyed out.
+
+
+.TP 4 
+.B
+DFM for X =>
+
+.TP 8 
+\fIInfo\fP 
+.br
+Shows info about DFM. (Version number, author etc.)
+.TP 8
+\fIHelp\fP 
+.br
+Shows this manfile in a xterm.
+.TP 8
+\fIXTerm\fP 
+.br
+Launches a xterm window.
+.TP 8
+\fIAdd new programs\fP 
+.br
+A new window opens where you can type the name
+of a program. DFM will create a link to the program. This link will be
+created in the "~/.dfmdesk/" directory and after a few moments will
+appear on the desktop as an icon. You may move or copy this link to
+any other directory (see 'launching' and 'save settings').
+.TP 8
+\fISave positions/info\fP
+.br
+All information will be saved in the ".dfminfo" file (see 'save settings')
+.TP 8
+\fIQuit DFM\fP 
+.br
+Sends a 'killall dfm'. All instances of dfm will be killed, including
+the icons on the desktop.
+.TP 8
+\fIQuit X\fP
+.br
+Sends a 'killall X'.
+.br
+
+.TP 4
+.B
+Open =>
+.TP 8
+\fIProgram\fP 
+.br
+This is the same as a double click on an icon. If after selecting this
+option you don't press the righthand mousebutton on an icon, dfm will
+ignore this selection.
+.TP 8
+\fIXTerm -e ...\fP 
+.br
+DFM opens the program in a xterm. If you don't
+press the righthand mousebutton on an icon after this selection, dfm
+will ignore this.
+.TP 8
+\fIWithout extension\fP 
+.br
+DFM opens the program ignoring the
+shellcommand specified. If you don't press the righthand mousebutton
+on an icon, dfm will ignore this.
+.TP 8
+\fINormal view\fP 
+.br
+DFM opens a folder in normal mode (icons). If
+you don't press the right mouse on an folder icon, dfm will ignore
+this. The shellcomand is "dfm dirname"; an active dfm will use the 
+current folder.
+.TP 8
+\fIStructure view\fP 
+.br
+DFM opens a folder in structure mode (tree). If you don't press the
+right mouse on an folder icon dfm will ignore this. The shellcomand is
+"dfm dirname -stucture"; an active dfm will use the current folder.
+.TP 8
+\fIDetail view\fP 
+.br
+DFM opens a folder in detail mode (more info). If you don't press the
+right mouse on an folder icon dfm will ignore this. The shellcomand is
+"dfm dirname -detail"; an active dfm will use the current folder.
+.TP 8
+\fIGo up one folder\fP
+.br
+DFM opens the folder which is above this one in normal mode.
+.br
+
+.TP 4
+.B
+Options 
+.br
+An options menu is opened for the dfm-object that the mouse points
+to. This can be the desktopbackground, a directory window or an
+icon. Please refer below to \fIOption Windows\fP.
+.TP 8
+\fICreate =>\fP 
+.br
+Folder or File
+.TP 8
+\fIUpdate\fP
+.br
+rereads the directory.
+.TP 8
+\fIRe-recognize\fP
+.br
+deletes the Shellcommand(s) of the selected file(s) and reads 
+the .dfmext file again, updating the shellcommands(s) in the process.
+.TP 8
+\fISelect all\fP
+.br
+Select all objects in the window or on the desktop.
+.TP 8
+\fIDelete\fP
+.br
+Delete the selected item or items.
+.TP 8
+\fISort =>\fP
+.br
+With this option sort the icons or objects may be sorted on one of the
+following keys: name, type, extension; date ascending or descending or
+size ascending/descending.
+.TP 8
+\fIArrange\fP This option arranges the icons on the desktop or in the
+window in a grid as specified in the Desktop Option Window
+(below). Icons that have 'Prevent moving' checked, will stay where
+they are.
+
+.TP 4
+.B Option Windows
+.br
+There are four types of option windows: the \fIFile-Options\fP window, 
+that appears when an icon is clicked on with the righthand button; 
+the \fIMultiple-File-Options\fP window, that appears if you select more 
+than one icon; the \fIWindow-Options\fP window, that appears when a 
+dfm-window is clicked and the \fIMaindesktop-Options\fP window, when 
+the background (desktop) is clicked.
+
+.TP 4
+\fIWindow-Options\fP 
+.br
+There are two placeholders for filenames; one for the directory name
+of the folder and one for the the backgroundpixmap or color. Just
+select the "pixmap" button or the "Color" button. The file window also
+has two checkbuttons: "Windowinfo will be saved" and "Iconinfo will be
+saved". Windows in the "~/.dfmdesk/" \fIPath\fP always have activated
+buttons. The desktopbackground doesn't have these buttons, but they
+are activated, too. DFM automatically select "Windowinfo will be
+saved" on the new window if you launch a link from the "~/.dfmdesk/"
+\fIPath\fP and the current window is in icon mode.
+.br
+
+If "Windowinfo will be saved" is activated DFM will save the window
+position and the name of the backgroundpixmap. DFM will do it if you
+select 'Save positions/info'.
+.br
+If "Iconinfo`ll be saved" is activated DFM will save all info about
+the icons in the associated window. This info includes icon, position
+and command.  This also is the action taken by DFM when you select 'Save
+positions/info'. \fINote:\fP If you don't select this DFM won't save
+the iconinfo if you change an iconposition or the shellcommand! If you
+select this DFM will ignore the ".dfmext" file the second time DFM is
+started (see 'files').
+
+.TP 4
+\fIMaindesktop-Options\fP 
+.br
+The setting of the color and background are the same as in the 'file
+options window'. The four round buttons describe how icons will be
+arranged ('Sort'). The four inputfields below the round buttons
+describe the boundingbox in which icons will be arranged. The 'Grid
+tight' describes how icons will be placed on the desktop if they are
+moved. The last two checkbuttons show where the contextmenu of the
+windowmanager is available.
+
+.TP 4
+\fIFile-Options\fP 
+.br
+At the first two lines you see the full pathname of the file and an
+optional 'rename'-field. The icon Pixmap to be displayed for this
+directory can be entered in the next line. You can also change the
+icon by pressing on the pixmap and entering a separate menu window. A
+checkbutton below that level gives the opportunity to prevent moving
+the icon after a re-arrangement of the desktop. Below this line there
+are info on Size, 'Link to' and Time of the file. You also can change
+the shellcommand that is executed by doubleclicking the icon. '!0!' is
+the parameter for the filename, it must be there. (see launching) The
+last are the rights. You can change the rights only if you have the
+permission. (You can't change the modeline of a link)
+
+.TP 4
+\fIMultiple-File-Options\fP 
+.br
+Here you can set options for more than one file, with a single step.
+
+.SH BUGS/LIMITATIONS
+Any bug reports or comments will be appreciated! 
+
+DFM has run on the following combinations of operating systems, window
+managers and X implementations:
+
+Linux 2.0.22 , 2.0.30; MkLinux (PPC); IRIX 6.2 , 6.3; SunOS 5.5.1
+.br
+
+X11R6 1,4,8,16,32 Bit color. Accelerated X.
+.br
+
+fvwm95, fvwm2, fvwm, olvwm, olwm, twm, mlvwm (apple-mac look and
+feel), AfterStep, bowman, WindowMaker, mwm, 4Dwm, wm2, wmx (but
+without multiple desks) Enlightenment DR_0.9 (wm) (DFM runs only if
+the wm already have been started: add "dfm" in the "system_config/exec" file).
+.br
+
+xearth, xfishtank (with the -d option), xmountains, xv (in the rootwindow), 
+xsnow (but makes my computer slow;IRIX works in normal speed)
+.br
+
+DFM doesn't currently run with:
+.br
+amiwm (amiga windowmanager)
+
+.SH AUTHOR
+
+Copyleft Achim Kaiser...
+
+
+Thanks to:          for (and more)
+.br
+-----------------------------------
+.br
+Anuj Dev            Sun Testing
+.br
+Henning Ehlermann   tar copy idea
+.br
+Scott Sams          picture icons
+                    html-netscape icon
+.br
+George R. Welch     the extension manager
+.br
+Hans Paijmans       man-page
+
+(random order)
